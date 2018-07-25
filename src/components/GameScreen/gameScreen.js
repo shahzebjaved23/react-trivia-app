@@ -3,6 +3,12 @@ import './gameScreen.css'
 
 export class GameScreen extends Component {
 
+	componentWillMount(){
+		if(this.props.currentQuestion == null){
+			this.props.history.push('/')
+		}
+	}
+
 	getCurrentQuestion(){
 		const question = this.props.questions[this.props.currentQuestion]
 		return question ? question : null 

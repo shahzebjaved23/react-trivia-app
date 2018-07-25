@@ -2,12 +2,21 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import { nextQuestion, previousQuestion, startGame, addAnswer } from './actions/questionActions'
+import { nextQuestion, previousQuestion, startGame, addAnswer, welcomeScreen } from './actions/questionActions'
 import { GameScreen } from './components/GameScreen/gameScreen'
 import { ScoreScreen } from './components/ScoreScreen/scoreScreen'
 import { WelcomeScreen } from './components/WelcomeScreen/welcomeScreen'
 
 class App extends Component {
+
+    componentDidMount(){
+        window.onhashchange = () => {
+            let toWelcomeScreen = this.props.currentQuestion == 0
+            if(toWelcomeScreen){
+                this.props.toWelComeScreen()
+            }
+        }
+    }
 
     startGame(){
         this.props.startGame()
@@ -39,6 +48,7 @@ const mapDistpatchToProps = dispatch => {
     return {
         toNextQuestion: () => dispatch(nextQuestion()),
         toPreviousQuestion: () => dispatch(previousQuestion()),
+        toWelComeScreen: () => dispatch(startGame()),
         startGame: () => dispatch(startGame()),
         addAnswer: (answer) => dispatch(addAnswer(answer)) 
     }
