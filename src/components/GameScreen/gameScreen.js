@@ -3,16 +3,6 @@ import './gameScreen.css'
 
 export class GameScreen extends Component {
 
-	constructor(props){
-		super(props)
-		this.state = {
-			currentQuestion: props.currentQuestion,
-			answer: {
-				questionNum: props.currentQuestion
-			}
-		}
-	}
-
 	getCurrentQuestion(){
 		const question = this.props.questions[this.props.currentQuestion]
 		return question ? question : null 
@@ -23,8 +13,14 @@ export class GameScreen extends Component {
 		if(this.refs.trueRadio.checked) currentAnswer = true
 		if(this.refs.falseRadio.checked) currentAnswer = false
 		this.props.addAnswer({ questionNum: this.props.currentQuestion, questionAns: currentAnswer})
-		this.props.toNextQuestion()
+		setTimeout(null, 2000)
+		this.toNextQuestionOrScore()
 		this.resetQuestion()
+	}
+
+	toNextQuestionOrScore(){
+		const gameOver = this.props.currentQuestion + 1 > (this.props.questions.length - 1)
+		gameOver ? this.props.history.push('/score') : this.props.toNextQuestion()
 	}
 
 	resetQuestion(){
