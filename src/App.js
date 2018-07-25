@@ -8,14 +8,18 @@ import { ScoreScreen } from './components/ScoreScreen/scoreScreen'
 import { WelcomeScreen } from './components/WelcomeScreen/welcomeScreen'
 
 class App extends Component {
+
+    startGame(){
+        this.props.startGame()
+    }
+
     render() {
         return (
             <Router>
                 <div>
-                    <h1>The Trivia App</h1>
-                    <Link to='/game'><button>Start Game</button></Link>    
-                    <Route exact path='/'  component={WelcomeScreen} />
-                    <Route path='/game' component={GameScreen} />
+                    <h1>The Trivia App</h1>  
+                    <Route exact path='/' render={(props) => <WelcomeScreen startGame={this.props.startGame} {...props} /> }  />
+                    <Route path='/game' render={(props) => <GameScreen currentQuestion={this.props.currentQuestion} questions={this.props.questions} toNextQuestion={this.props.toNextQuestion} toPreviousQuestion={this.props.toPreviousQuestion} {...props} />}  />
                 </div>
             </Router>
         );
@@ -26,7 +30,7 @@ const mapStateToProps = state => {
     return {
         questions: state.questionReducer.questions,
         currentQuestion: state.questionReducer.currentQuestion,
-        gameOver: state.questionReducer.gameOver
+        answers: state.questionReducer.answers
     }
 }
 
