@@ -8,8 +8,18 @@ export class ScoreScreen extends Component {
 		this.props.history.push('/game')
 	}
 
+	calculateScore(){
+		let scores = this.props.questions.map( (question, index) => {
+			let correctAnswer = question.answer === this.props.answers[index.toString()]
+			return correctAnswer ? 1 : 0
+		})
+		let score = scores.reduce( (sum, current) => {
+			return sum + current
+		})
+		return score
+	}
+
 	render(){
-		console.log(this.props.answers)
 		return (
 			<div>
 				<h1>Score Screen</h1>
@@ -24,6 +34,8 @@ export class ScoreScreen extends Component {
 						</li>
 					)
 				})}
+
+				<h2>Total Score: { this.calculateScore() }</h2>
 				<button onClick={this.playAgain.bind(this)}>Play Again</button>
 			</div>	
 		)
