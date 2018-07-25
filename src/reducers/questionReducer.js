@@ -1,9 +1,9 @@
 import { NEXT_QUESTION, PREVIOUS_QUESTION, START_GAME, ADD_ANSWER } from '../actions/actionTypes'
 
 const initialState = {
-	questions: [],
+	questions: require('../questions.json'),
 	currentQuestion: null,
-	answers: {}
+	answers: []
 }
 
 const getNextQuestion = state => {
@@ -20,7 +20,8 @@ export const questionReducer = (state = initialState, action) => {
 		case START_GAME :
 			return {
 				...state,
-				currentQuestion: 0
+				currentQuestion: 0,
+				answers: {}
 			}
 			break;
 		
@@ -39,9 +40,11 @@ export const questionReducer = (state = initialState, action) => {
 			break;
 
 		case ADD_ANSWER :
+			const answers = state.answers
+			answers[`${action.payload.answer.questionNum}`] = action.payload.answer.questionAns
 			return {
 				...state,
-				answers: state.answers[`${action.payload.answer.questionNum}`] = action.payload.answer.questionAns
+				answers: answers
 			}
 			break;
 
