@@ -19,7 +19,6 @@ export class GameScreen extends Component {
 		if(this.refs.trueRadio.checked) currentAnswer = true
 		if(this.refs.falseRadio.checked) currentAnswer = false
 		this.props.addAnswer({ questionNum: this.props.currentQuestion, questionAns: currentAnswer})
-		setTimeout(null, 2000)
 		this.toNextQuestionOrScore()
 		this.resetQuestion()
 	}
