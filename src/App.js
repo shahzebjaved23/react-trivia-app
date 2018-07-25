@@ -17,11 +17,7 @@ class App extends Component {
             }
         }
     }
-
-    startGame(){
-        this.props.startGame()
-    }
-
+    
     render() {
         return (
             <Router>
