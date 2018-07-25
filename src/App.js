@@ -20,6 +20,7 @@ class App extends Component {
                     <h1>The Trivia App</h1>  
                     <Route exact path='/' render={(props) => <WelcomeScreen startGame={this.props.startGame} {...props} /> }  />
                     <Route path='/game' render={(props) => <GameScreen currentQuestion={this.props.currentQuestion} questions={this.props.questions} toNextQuestion={this.props.toNextQuestion} toPreviousQuestion={this.props.toPreviousQuestion} {...props} />}  />
+                    <Route path='/score' render={(props) => <ScoreScreen questions={this.props.questions} answers={this.props.answers} {...props} /> }/>
                 </div>
             </Router>
         );

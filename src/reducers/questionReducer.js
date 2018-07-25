@@ -10,10 +10,6 @@ const getNextQuestion = state => {
 	return state.currentQuestion + 1
 }
 
-const getGameOver = state => {
-	return getNextQuestion(state) > state.questions.length
-}
-
 const getPreviousQuestion = state => {
 	return state.currentQuestion - 1 <= 0 ? 0 : state.currentQuestion 
 }
@@ -31,7 +27,7 @@ export const questionReducer = (state = initialState, action) => {
 		case NEXT_QUESTION :
 			return {
 				...state,
-				currentQuestion: state.currentQuestion + 1
+				currentQuestion: getNextQuestion(state)
 			}
 			break;
 
