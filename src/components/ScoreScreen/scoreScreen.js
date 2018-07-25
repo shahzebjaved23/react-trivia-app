@@ -13,9 +13,7 @@ export class ScoreScreen extends Component {
 			let correctAnswer = question.answer === this.props.answers[index.toString()]
 			return correctAnswer ? 1 : 0
 		})
-		let score = scores.reduce( (sum, current) => {
-			return sum + current
-		})
+		let score = scores.reduce( (sum, current) => sum + current )
 		return score
 	}
 
