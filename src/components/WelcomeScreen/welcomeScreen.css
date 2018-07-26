@@ -1,3 +1,10 @@
-.link-button a:hover{
-	text-decoration: none;
+.welcome-screen{
+	padding-top: 50px;
+	text-align: center;
+}
+
+.start-game-button{
+	margin: auto;
+	display: block;
+	margin-top: 50px;
 }

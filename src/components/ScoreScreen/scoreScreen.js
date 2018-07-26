@@ -36,11 +36,11 @@ export class ScoreScreen extends Component {
 						{
 							Object.keys(this.props.answers).map( questionNum => {
 								return (
-									<tr style={{ height: 50 ,backgroundColor: this.props.answers[questionNum] == this.props.questions[questionNum].answer ? '#c3e6cb' : '#f5c6cb' }} key={ questionNum }>
-										<td style={{ paddingTop: 10 }}>{ parseInt(questionNum) + 1 }</td>
-										<td style={{ paddingTop: 10 }}>{ this.props.questions[questionNum].question }</td>
-										<td style={{ paddingTop: 10 }}>{ this.props.answers[questionNum].toString() }</td>
-										<td style={{ paddingTop: 10 }}>{ this.props.questions[questionNum].answer.toString() }</td>
+									<tr className="score-row" style={{ backgroundColor: this.props.answers[questionNum] == this.props.questions[questionNum].answer ? '#c3e6cb' : '#f5c6cb' }} key={ questionNum }>
+										<td className="score-data">{ parseInt(questionNum) + 1 }</td>
+										<td className="score-data">{ this.props.questions[questionNum].question }</td>
+										<td className="score-data">{ this.props.answers[questionNum].toString() }</td>
+										<td className="score-data">{ this.props.questions[questionNum].answer.toString() }</td>
 									</tr>
 								)
 							})

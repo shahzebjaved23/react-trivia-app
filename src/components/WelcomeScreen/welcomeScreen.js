@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './welcomeScreen'
+import './welcomeScreen.css'
 
 export class WelcomeScreen extends Component {
 
@@ -10,13 +10,14 @@ export class WelcomeScreen extends Component {
 
 	render(){
 		return (
-			<div style={{ paddingTop: 50 }}>
-				<div className="jumbotron" style={{ textAlign: "center"}}>
+			<div className="welcome-screen">
+				<div className="jumbotron">
                     <h1>The Trivia App</h1>
                     <p>A simple trivia application</p>
                 </div>
-				<h2 style={{ textAlign: "center" }}>Complete the trivia to know test your knowledge and know your score</h2>
-				<button className="btn btn-lg btn-success" style={{ margin: "auto", display: "block", marginTop: 50 }} onClick={ this.startGame.bind(this) } >
+				<h2>Complete the trivia to know test your knowledge and know your score</h2>
+				<h3>Can you score a 100%</h3>
+				<button className="btn btn-lg btn-success start-game-button" onClick={ this.startGame.bind(this) }>
 					Start Game
 				</button>
 			</div>
