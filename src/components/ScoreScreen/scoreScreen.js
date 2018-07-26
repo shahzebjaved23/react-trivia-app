@@ -50,7 +50,7 @@ export class ScoreScreen extends Component {
 				
 
 				<h2 style={{ textAlign: "center"}}>Total Score: { this.calculateScore() }</h2>
-				<button style={{ }} className="btn btn-lg btn-success play-again-button" onClick={this.playAgain.bind(this)}>Play Again</button>
+				<button className="btn btn-lg btn-success play-again-button" onClick={this.playAgain.bind(this)}>Play Again</button>
 			</div>	
 		)
 	}
