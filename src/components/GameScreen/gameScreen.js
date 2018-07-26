@@ -14,13 +14,9 @@ export class GameScreen extends Component {
 		return question ? question : null 
 	}
 
-	getCurrentAnswer(){
-		let currentAnswer
-		if(this.refs.trueRadio.checked) currentAnswer = true
-		if(this.refs.falseRadio.checked) currentAnswer = false
+	addCurrentAnswerAndNext(currentAnswer){
 		this.props.addAnswer({ questionNum: this.props.currentQuestion, questionAns: currentAnswer})
 		this.toNextQuestionOrScore()
-		this.resetQuestion()
 	}
 
 	toNextQuestionOrScore(){
@@ -28,26 +24,22 @@ export class GameScreen extends Component {
 		gameOver ? this.props.history.push('/score') : this.props.toNextQuestion()
 	}
 
-	resetQuestion(){
-		this.refs.trueRadio.checked = false
-		this.refs.falseRadio.checked = false
-	}
-
 	render(){
 		return (
-			<div>
-				<h1>Game Screen | Question {this.props.currentQuestion + 1}</h1>
-				{ this.getCurrentQuestion().question }
+			<div className="container" style={{ paddingTop: 130 }}>
+				<div className="jumbotron">
+					<h1>No # { this.props.currentQuestion + 1 } : { this.getCurrentQuestion().question }</h1>
+				</div>
 
-				<hr/>
+				<div className="row">
+					<div className="col-md-6">
+						<button onClick={() => this.addCurrentAnswerAndNext(true) } style={{ width: '100%'}} className="btn btn-lg btn-success">True</button>
+					</div>
+					<div className="col-md-6">
+						<button onClick={() => this.addCurrentAnswerAndNext(false) } style={{ width: '100%'}} className="btn btn-lg btn-warning">False</button>	
+					</div>
+				</div>
 
-				<label>True</label>
-				<input onChange={this.getCurrentAnswer.bind(this)} ref='trueRadio' type='radio' name='trueAnswer' />
-
-				<label>False</label>
-				<input onChange={this.getCurrentAnswer.bind(this)} ref='falseRadio' type='radio' name='falseAnswer' />
-
-				<br/>
 			</div>	
 		)
 	}

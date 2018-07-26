@@ -17,12 +17,11 @@ class App extends Component {
             }
         }
     }
-    
+
     render() {
         return (
             <Router>
-                <div>
-                    <h1>The Trivia App</h1>  
+                <div style={{ height: '100vh' ,backgroundColor: "#eeeeee" }}>
                     <Route exact path='/' render={(props) => <WelcomeScreen startGame={this.props.startGame} {...props} /> }  />
                     <Route path='/game' render={(props) => <GameScreen answers={this.props.answers} addAnswer={this.props.addAnswer} currentQuestion={this.props.currentQuestion} questions={this.props.questions} toNextQuestion={this.props.toNextQuestion} toPreviousQuestion={this.props.toPreviousQuestion} {...props} />}  />
                     <Route path='/score' render={(props) => <ScoreScreen startGame={this.props.startGame} questions={this.props.questions} answers={this.props.answers} {...props} /> }/>

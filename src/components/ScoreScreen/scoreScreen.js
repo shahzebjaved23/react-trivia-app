@@ -19,22 +19,38 @@ export class ScoreScreen extends Component {
 
 	render(){
 		return (
-			<div>
-				<h1>Score Screen</h1>
-				{ Object.keys(this.props.answers).map( questionNum => {
-					return (
-						<li key={ questionNum }>
-							question { parseInt(questionNum) + 1 }: { this.props.questions[questionNum].question }
-							<br/>
-							Answer Given: { this.props.answers[questionNum].toString() }
-							<br/>
-							Correct Answer: { this.props.questions[questionNum].answer.toString() }
-						</li>
-					)
-				})}
+			<div className="container" style={{ backgroundColor: "#eeeeee" }}>
+				<h1 style={{ textAlign: 'center' }}>Your Score</h1>
+				<table className="table" style={{ width:"100%" }} >
+					<thead>
+						<tr>
+							<th>Num #</th>
+							<th>Question</th> 
+							<th>Given Answer</th>
+							<th>Correct Answer</th>
+						</tr>
+					</thead>
+					
+					
+					<tbody>
+						{
+							Object.keys(this.props.answers).map( questionNum => {
+								return (
+									<tr style={{ height: 50 ,backgroundColor: this.props.answers[questionNum] == this.props.questions[questionNum].answer ? '#c3e6cb' : '#f5c6cb' }} key={ questionNum }>
+										<td style={{ paddingTop: 10 }}>{ parseInt(questionNum) + 1 }</td>
+										<td style={{ paddingTop: 10 }}>{ this.props.questions[questionNum].question }</td>
+										<td style={{ paddingTop: 10 }}>{ this.props.answers[questionNum].toString() }</td>
+										<td style={{ paddingTop: 10 }}>{ this.props.questions[questionNum].answer.toString() }</td>
+									</tr>
+								)
+							})
+						}
+					</tbody>
+				</table>
+				
 
-				<h2>Total Score: { this.calculateScore() }</h2>
-				<button onClick={this.playAgain.bind(this)}>Play Again</button>
+				<h2 style={{ textAlign: "center"}}>Total Score: { this.calculateScore() }</h2>
+				<button style={{ margin: "auto", display: "block", marginTop: 30}} className="btn btn-lg btn-success" onClick={this.playAgain.bind(this)}>Play Again</button>
 			</div>	
 		)
 	}
