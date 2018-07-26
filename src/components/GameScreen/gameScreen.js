@@ -34,10 +34,10 @@ export class GameScreen extends Component {
 
 				<div className="row">
 					<div className="col-md-6">
-						<button onClick={() => this.addCurrentAnswerAndNext(true) } style={{ width: '100%'}} className="btn btn-lg btn-success">True</button>
+						<button onClick={() => this.addCurrentAnswerAndNext(true) } className="btn btn-lg btn-success answer-button">True</button>
 					</div>
 					<div className="col-md-6">
-						<button onClick={() => this.addCurrentAnswerAndNext(false) } style={{ width: '100%'}} className="btn btn-lg btn-warning">False</button>	
+						<button onClick={() => this.addCurrentAnswerAndNext(false) } className="btn btn-lg btn-warning answer-button">False</button>	
 					</div>
 				</div>
 
