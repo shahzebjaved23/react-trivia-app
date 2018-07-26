@@ -29,6 +29,7 @@ export class GameScreen extends Component {
 			<div className="container" style={{ paddingTop: 130 }}>
 				<div className="jumbotron">
 					<h1>No # { this.props.currentQuestion + 1 } : { this.getCurrentQuestion().question }</h1>
+					<p>{ this.props.questions[this.props.currentQuestion].category } | { this.props.questions[this.props.currentQuestion].subcategory }</p>
 				</div>
 
 				<div className="row">

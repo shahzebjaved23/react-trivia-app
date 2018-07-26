@@ -6,49 +6,49 @@
 		"answer": true
 	},
 	{
-		"question": "The chicked crossed the road to get to the other side",
+		"question": "Voldemort has a good heart",
+		"category": "Entertainment",
+		"subcategory": "Harry Potter",
+		"answer": false
+	},
+	{
+		"question": "2 + 2 = 5",
 		"category": "Entertainment",
 		"subcategory": "Non Sense",
 		"answer": false
 	},
 	{
-		"question": "The chicked crossed the road to get to the other side",
+		"question": "I have more billions than Bill Gates",
+		"category": "Dream",
+		"subcategory": "Non Sense",
+		"answer": false
+	},
+	{
+		"question": "Eminem has never used obsene language in his songs",
+		"category": "Entertainment",
+		"subcategory": "Non Sense",
+		"answer": false
+	},
+	{
+		"question": "A person can stand on one leg",
 		"category": "Entertainment",
 		"subcategory": "Non Sense",
 		"answer": true
 	},
 	{
-		"question": "The chicked crossed the road to get to the other side",
-		"category": "Entertainment",
-		"subcategory": "Non Sense",
-		"answer": false
-	},
-	{
-		"question": "The chicked crossed the road to get to the other side",
+		"question": "Modern day cars a better than space ships",
 		"category": "Entertainment",
 		"subcategory": "Non Sense",
 		"answer": true
 	},
 	{
-		"question": "The chicked crossed the road to get to the other side",
+		"question": "You should put ketchup on cake",
 		"category": "Entertainment",
 		"subcategory": "Non Sense",
 		"answer": false
 	},
 	{
-		"question": "The chicked crossed the road to get to the other side",
-		"category": "Entertainment",
-		"subcategory": "Non Sense",
-		"answer": true
-	},
-	{
-		"question": "The chicked crossed the road to get to the other side",
-		"category": "Entertainment",
-		"subcategory": "Non Sense",
-		"answer": false
-	},
-	{
-		"question": "The chicked crossed the road to get to the other side",
+		"question": "You should chew with mouth closed",
 		"category": "Entertainment",
 		"subcategory": "Non Sense",
 		"answer": true
