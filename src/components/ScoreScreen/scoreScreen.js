@@ -10,7 +10,7 @@ export class ScoreScreen extends Component {
 
 	calculateScore(){
 		let scores = this.props.questions.map( (question, index) => {
-			let correctAnswer = question.answer === this.props.answers[index.toString()]
+			let correctAnswer = question.correct_answer === this.props.answers[index.toString()]
 			return correctAnswer ? 1 : 0
 		})
 		let score = scores.reduce( (sum, current) => sum + current )
@@ -36,11 +36,11 @@ export class ScoreScreen extends Component {
 						{
 							Object.keys(this.props.answers).map( questionNum => {
 								return (
-									<tr className="score-row" style={{ backgroundColor: this.props.answers[questionNum] == this.props.questions[questionNum].answer ? '#c3e6cb' : '#f5c6cb' }} key={ questionNum }>
+									<tr className="score-row" style={{ backgroundColor: this.props.answers[questionNum] == this.props.questions[questionNum].correct_answer ? '#c3e6cb' : '#f5c6cb' }} key={ questionNum }>
 										<td className="score-data">{ parseInt(questionNum) + 1 }</td>
 										<td className="score-data">{ this.props.questions[questionNum].question }</td>
 										<td className="score-data">{ this.props.answers[questionNum].toString() }</td>
-										<td className="score-data">{ this.props.questions[questionNum].answer.toString() }</td>
+										<td className="score-data">{ this.props.questions[questionNum].correct_answer.toString() }</td>
 									</tr>
 								)
 							})

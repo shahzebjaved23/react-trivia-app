@@ -1,7 +1,7 @@
-import { NEXT_QUESTION, PREVIOUS_QUESTION, START_GAME, ADD_ANSWER } from '../actions/actionTypes'
+import { NEXT_QUESTION, PREVIOUS_QUESTION, START_GAME, ADD_ANSWER, LOAD_QUESTIONS } from '../actions/actionTypes'
 
 const initialState = {
-	questions: require('../questions.json'),
+	questions: [],
 	currentQuestion: null,
 	answers: []
 }
@@ -45,6 +45,13 @@ export const questionReducer = (state = initialState, action) => {
 			return {
 				...state,
 				answers: answers
+			}
+			break;
+
+		case LOAD_QUESTIONS:
+			return {
+				...state,
+				questions: action.payload.results
 			}
 			break;
 
