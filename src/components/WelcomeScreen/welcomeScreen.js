@@ -5,6 +5,7 @@ export class WelcomeScreen extends Component {
 
 	startGame(){
 		this.props.startGame()
+		console.log(this.props.currentQuestion)
 		this.props.history.push('/game')
 	}
 

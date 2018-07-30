@@ -9,10 +9,6 @@ export class GameScreen extends Component {
 		}
 	}
 
-	htmlEntities(str) {
-	    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-	}
-
 	getCurrentQuestion(){
 		const question = this.props.questions[this.props.currentQuestion]
 		return question ? question : null 
@@ -31,9 +27,9 @@ export class GameScreen extends Component {
 
 	render(){
 		return (
-			<div className="container" style={{ paddingTop: 130 }}>
+			<div className="container" style={{ paddingTop: 100 }}>
 				<div className="jumbotron">
-					<h1>No # { this.props.currentQuestion + 1 } : { this.htmlEntities(this.getCurrentQuestion().question) }</h1>
+					<h1>No # { this.props.currentQuestion + 1 } : { this.getCurrentQuestion().question  }</h1>
 					<p>{ this.props.questions[this.props.currentQuestion].category }</p>
 				</div>
 

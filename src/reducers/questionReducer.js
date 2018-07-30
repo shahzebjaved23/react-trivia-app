@@ -18,6 +18,7 @@ export const questionReducer = (state = initialState, action) => {
 	switch(action.type){
 
 		case START_GAME :
+			console.log(action)
 			return {
 				...state,
 				currentQuestion: 0,

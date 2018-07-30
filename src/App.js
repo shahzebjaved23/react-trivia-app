@@ -7,13 +7,9 @@ import { GameScreen } from './components/GameScreen/gameScreen'
 import { ScoreScreen } from './components/ScoreScreen/scoreScreen'
 import { WelcomeScreen } from './components/WelcomeScreen/welcomeScreen'
 
-class App extends Component {
-
-    componentWillMount(){
-        this.props.loadQuestions();
-    }
-
+class App extends Component {  
     componentDidMount(){
+        this.props.loadQuestions()
         window.onhashchange = () => {
             let toWelcomeScreen = this.props.currentQuestion == 0
             if(toWelcomeScreen){
