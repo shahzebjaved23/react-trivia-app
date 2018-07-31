@@ -31,7 +31,7 @@ class GameScreen extends Component {
 		return (
 			<div className="container" style={{ paddingTop: 100 }}>
 				<div className="jumbotron">
-					<h1 ref='question'>No # { this.props.currentQuestion + 1 } : { this.getCurrentQuestion().question  }</h1>
+					<h1 dangerouslySetInnerHTML={{ __html: `No # ${ this.props.currentQuestion + 1 } : ${ this.getCurrentQuestion().question  }`}}></h1>
 					<p>{ this.props.questions[this.props.currentQuestion].category }</p>
 				</div>
 
