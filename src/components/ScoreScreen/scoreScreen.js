@@ -1,23 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { loadQuestions, nextQuestion, previousQuestion, startGame, addAnswer } from '../../actions/questionActions'
+import { loadQuestions, nextQuestion, previousQuestion, startGame, addAnswer, calculateScore } from '../../actions/questionActions'
 import './scoreScreen.css'
 
 class ScoreScreen extends Component {
+
+	componentWillMount(){
+		this.props.calculateScore()
+	}
 
 	playAgain(){
 		this.props.loadQuestions()
 		this.props.startGame()
 		this.props.history.push('/game')
-	}
-
-	calculateScore(){
-		let scores = this.props.questions.map( (question, index) => {
-			let correctAnswer = question.correct_answer === this.props.answers[index.toString()]
-			return correctAnswer ? 1 : 0
-		})
-		let score = scores.reduce( (sum, current) => sum + current )
-		return score
 	}
 
 	render(){
@@ -51,7 +46,7 @@ class ScoreScreen extends Component {
 					</tbody>
 				</table>
 
-				<h2 style={{ textAlign: "center"}}>Total Score: { this.calculateScore() } / { this.props.questions.length }</h2>
+				<h2 style={{ textAlign: "center"}}>Total Score: { this.props.score } / { this.props.questions.length }</h2>
 				<button className="btn btn-lg btn-success play-again-button" onClick={this.playAgain.bind(this)}>Play Again</button>
 			</div>	
 		)
@@ -74,7 +69,8 @@ const mapDistpatchToProps = dispatch => {
         toWelComeScreen: () => dispatch(startGame()),
         startGame: () => dispatch(startGame()),
         addAnswer: (answer) => dispatch(addAnswer(answer)) ,
-        loadQuestions: () => dispatch(loadQuestions())
+        loadQuestions: () => dispatch(loadQuestions()),
+        calculateScore: () => dispatch(calculateScore())
     }
 }
 

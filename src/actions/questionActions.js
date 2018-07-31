@@ -31,6 +31,6 @@ export const addAnswer = answer => {
 	}
 }
 
-export const calcuateScore = () => {
+export const calculateScore = () => {
 	return { type: CALCULATE_SCORE }
 }
