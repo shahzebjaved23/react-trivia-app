@@ -1,9 +1,10 @@
-import { NEXT_QUESTION, PREVIOUS_QUESTION, START_GAME, ADD_ANSWER, LOAD_QUESTIONS } from '../actions/actionTypes'
+import { NEXT_QUESTION, PREVIOUS_QUESTION, START_GAME, ADD_ANSWER, LOAD_QUESTIONS, CALCULATE_SCORE } from '../actions/actionTypes'
 
 const initialState = {
 	questions: [],
 	currentQuestion: null,
-	answers: []
+	answers: [],
+	score: null
 }
 
 const getNextQuestion = state => {
@@ -52,6 +53,18 @@ export const questionReducer = (state = initialState, action) => {
 			return {
 				...state,
 				questions: action.payload.results
+			}
+			break;
+
+		case CALCULATE_SCORE:
+			let scores = state.questions.map( (question, index) => {
+				let correctAnswer = question.correct_answer === state.answers[index.toString()]
+				return correctAnswer ? 1 : 0
+			})
+			let score = scores.reduce( (sum, current) => sum + current )
+			return {
+				...state,
+				score: score
 			}
 			break;
 

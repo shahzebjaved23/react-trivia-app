@@ -1,4 +1,4 @@
-import { NEXT_QUESTION, PREVIOUS_QUESTION, GAME_OVER, START_GAME, ADD_ANSWER, LOAD_QUESTIONS } from './actionTypes'
+import { NEXT_QUESTION, PREVIOUS_QUESTION, GAME_OVER, START_GAME, ADD_ANSWER, LOAD_QUESTIONS, CALCULATE_SCORE } from './actionTypes'
 
 export const loadQuestions = () => {
 	return dispatch => {
@@ -29,4 +29,8 @@ export const addAnswer = answer => {
 		type: ADD_ANSWER,
 		payload: { answer: answer }
 	}
+}
+
+export const calcuateScore = () => {
+	return { type: CALCULATE_SCORE }
 }
