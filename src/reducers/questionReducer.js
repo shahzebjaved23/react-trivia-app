@@ -1,10 +1,11 @@
-import { NEXT_QUESTION, PREVIOUS_QUESTION, START_GAME, ADD_ANSWER, LOAD_QUESTIONS, CALCULATE_SCORE } from '../actions/actionTypes'
+import { NEXT_QUESTION, PREVIOUS_QUESTION, START_GAME, ADD_ANSWER, LOAD_QUESTIONS, CALCULATE_SCORE, GETTING_QUESTIONS } from '../actions/actionTypes'
 
 const initialState = {
 	questions: [],
 	currentQuestion: null,
 	answers: [],
-	score: null
+	score: null,
+	gettingQuestions: null
 }
 
 const getNextQuestion = state => {
@@ -52,7 +53,8 @@ export const questionReducer = (state = initialState, action) => {
 		case LOAD_QUESTIONS:
 			return {
 				...state,
-				questions: action.payload.results
+				questions: action.payload.results,
+				gettingQuestions: false
 			}
 			break;
 
@@ -65,6 +67,13 @@ export const questionReducer = (state = initialState, action) => {
 			return {
 				...state,
 				score: score
+			}
+			break;
+
+		case GETTING_QUESTIONS:
+			return {
+				...state,
+				gettingQuestions: true
 			}
 			break;
 

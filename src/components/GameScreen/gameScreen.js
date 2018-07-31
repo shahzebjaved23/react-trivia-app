@@ -28,25 +28,32 @@ class GameScreen extends Component {
 	}
 
 	render(){
-		return (
-			<div className="container" style={{ paddingTop: 100 }}>
-				<div className="jumbotron">
-					<h1 dangerouslySetInnerHTML={{ __html: `No # ${ this.props.currentQuestion + 1 } : ${ this.getCurrentQuestion().question  }`}}></h1>
-					<p>{ this.props.questions[this.props.currentQuestion].category }</p>
-				</div>
+		if(this.props.gettingQuestions){
+			return (
+				<div className="container" style={{ paddingTop: 100 }}>
+					<h1 style={{ textAlign: "center" }}>Loading New Question Please wait ...</h1>
+				</div>	
+			)
+		}else{
+			return (
+				<div className="container" style={{ paddingTop: 100 }}>
+					<div className="jumbotron">
+						<h1 dangerouslySetInnerHTML={{ __html: `No # ${ this.props.currentQuestion + 1 } : ${ this.getCurrentQuestion().question  }`}}></h1>
+						<p>{ this.props.questions[this.props.currentQuestion].category }</p>
+					</div>
 
-				<div className="row">
-					<div className="col-md-6">
-						<button onClick={() => this.addCurrentAnswerAndNext(true) } className="btn btn-lg btn-success answer-button">True</button>
-					</div>
-					<div className="col-md-6">
-						<button onClick={() => this.addCurrentAnswerAndNext(false) } className="btn btn-lg btn-warning answer-button">False</button>	
+					<div className="row">
+						<div className="col-md-6">
+							<button onClick={() => this.addCurrentAnswerAndNext(true) } className="btn btn-lg btn-success answer-button">True</button>
+						</div>
+						<div className="col-md-6">
+							<button onClick={() => this.addCurrentAnswerAndNext(false) } className="btn btn-lg btn-warning answer-button">False</button>	
+						</div>
 					</div>
 				</div>
-			</div>	
-		)
+			)
+		}
 	}
-
 }
 
 
@@ -55,7 +62,8 @@ const mapStateToProps = state => {
         questions: state.questionReducer.questions,
         currentQuestion: state.questionReducer.currentQuestion,
         answers: state.questionReducer.answers,
-        score: state.questionReducer.score
+        score: state.questionReducer.score,
+        gettingQuestions: state.questionReducer.gettingQuestions
     }
 }
 

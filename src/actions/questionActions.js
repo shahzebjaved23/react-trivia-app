@@ -1,7 +1,8 @@
-import { NEXT_QUESTION, PREVIOUS_QUESTION, GAME_OVER, START_GAME, ADD_ANSWER, LOAD_QUESTIONS, CALCULATE_SCORE } from './actionTypes'
+import { NEXT_QUESTION, PREVIOUS_QUESTION, GAME_OVER, START_GAME, ADD_ANSWER, LOAD_QUESTIONS, CALCULATE_SCORE, GETTING_QUESTIONS } from './actionTypes'
 
 export const loadQuestions = () => {
 	return dispatch => {
+		dispatch({ type: GETTING_QUESTIONS })
 		fetch("https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean").then(data => {
 			data.json().then(response => {
 				const actionPayload = response	
@@ -25,10 +26,7 @@ export const startGame = () => {
 }
 
 export const addAnswer = answer => {
-	return {
-		type: ADD_ANSWER,
-		payload: { answer: answer }
-	}
+	return { type: ADD_ANSWER, payload: { answer: answer } }
 }
 
 export const calculateScore = () => {
