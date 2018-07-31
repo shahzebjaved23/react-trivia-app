@@ -17,8 +17,7 @@ class GameScreen extends Component {
 	}
 
 	addCurrentAnswerAndNext(currentAnswer){
-		const questionAns = currentAnswer ? "True" : "False"
-		this.props.addAnswer({ questionNum: this.props.currentQuestion, questionAns: questionAns})
+		this.props.addAnswer({ questionNum: this.props.currentQuestion, questionAns: currentAnswer})
 		this.toNextQuestionOrScore()
 	}
 
@@ -30,13 +29,13 @@ class GameScreen extends Component {
 	render(){
 		if(this.props.gettingQuestions){
 			return (
-				<div className="container" style={{ paddingTop: 100 }}>
+				<div className="container" style={{ paddingTop: 80 }}>
 					<h1 style={{ textAlign: "center" }}>Loading New Question Please wait ...</h1>
 				</div>	
 			)
 		}else{
 			return (
-				<div className="container" style={{ paddingTop: 100 }}>
+				<div className="container" style={{ paddingTop: 80 }}>
 					<div className="jumbotron">
 						<h1 dangerouslySetInnerHTML={{ __html: `No # ${ this.props.currentQuestion + 1 } : ${ this.getCurrentQuestion().question  }`}}></h1>
 						<p>{ this.props.questions[this.props.currentQuestion].category }</p>
@@ -44,10 +43,10 @@ class GameScreen extends Component {
 
 					<div className="row">
 						<div className="col-md-6">
-							<button onClick={() => this.addCurrentAnswerAndNext(true) } className="btn btn-lg btn-success answer-button">True</button>
+							<button onClick={() => this.addCurrentAnswerAndNext("True") } className="btn btn-lg btn-success answer-button">True</button>
 						</div>
 						<div className="col-md-6">
-							<button onClick={() => this.addCurrentAnswerAndNext(false) } className="btn btn-lg btn-warning answer-button">False</button>	
+							<button onClick={() => this.addCurrentAnswerAndNext("False") } className="btn btn-lg btn-warning answer-button">False</button>	
 						</div>
 					</div>
 				</div>
@@ -55,7 +54,6 @@ class GameScreen extends Component {
 		}
 	}
 }
-
 
 const mapStateToProps = state => {
     return {
