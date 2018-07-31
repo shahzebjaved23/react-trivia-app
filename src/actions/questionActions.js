@@ -3,12 +3,10 @@ import { NEXT_QUESTION, PREVIOUS_QUESTION, GAME_OVER, START_GAME, ADD_ANSWER, LO
 export const loadQuestions = () => {
 	return dispatch => {
 		dispatch({ type: GETTING_QUESTIONS })
-		fetch("https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean").then(data => {
-			data.json().then(response => {
-				const actionPayload = response	
-				const action = { type: LOAD_QUESTIONS, payload: actionPayload }
-				dispatch(action)
-			})
+		fetch("https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean").then(data => data.json()).then(response => {
+			const actionPayload = response	
+			const action = { type: LOAD_QUESTIONS, payload: actionPayload }
+			dispatch(action)
 		})
 	}
 }
