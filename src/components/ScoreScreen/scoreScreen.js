@@ -36,7 +36,7 @@ class ScoreScreen extends Component {
 								return (
 									<tr className="score-row" style={{ backgroundColor: this.props.answers[questionNum] == this.props.questions[questionNum].correct_answer ? '#c3e6cb' : '#f5c6cb' }} key={ questionNum }>
 										<td className="score-data">{ parseInt(questionNum) + 1 }</td>
-										<td className="score-data">{ this.props.questions[questionNum].question }</td>
+										<td className="score-data" dangerouslySetInnerHTML={{ __html: this.props.questions[questionNum].question }}></td>
 										<td className="score-data">{ this.props.answers[questionNum].toString() }</td>
 										<td className="score-data">{ this.props.questions[questionNum].correct_answer.toString() }</td>
 									</tr>
