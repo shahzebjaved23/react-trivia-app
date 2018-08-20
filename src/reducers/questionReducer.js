@@ -59,11 +59,10 @@ export const questionReducer = (state = initialState, action) => {
 			break;
 
 		case CALCULATE_SCORE:
-			let scores = state.questions.map( (question, index) => {
+			let score = state.questions.map( (question, index) => {
 				let correctAnswer = question.correct_answer === state.answers[index.toString()]
 				return correctAnswer ? 1 : 0
-			})
-			let score = scores.reduce( (sum, current) => sum + current )
+			}).reduce( (sum, current) => sum + current )
 			return {
 				...state,
 				score: score
